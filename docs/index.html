@@ -1,0 +1,37 @@
+<!doctype html><html lang="nl"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"><title>Woningen</title>
+<style>
+:root{--bg:#fff;--fg:#1a1a1a;--mu:#666;--card:#f4f4f2;--bd:#ddd}
+@media(prefers-color-scheme:dark){:root{--bg:#121212;--fg:#eee;--mu:#9a9a9a;--card:#1e1e1e;--bd:#333}}
+body{margin:0 auto;padding:16px;max-width:720px;background:var(--bg);color:var(--fg);font:16px/1.4 system-ui,sans-serif}
+button,select{font:inherit;padding:6px 10px;border:1px solid var(--bd);border-radius:8px;background:var(--card);color:var(--fg)}
+button.on{border-color:var(--fg)}.bar{display:flex;flex-wrap:wrap;gap:6px;margin:12px 0}
+.c{background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:12px;margin:10px 0}
+.m{color:var(--mu);font-size:14px}a{color:inherit}
+</style></head><body><h1>Woningen</h1><div class="bar" id="f"></div>
+<div class="bar"><select id="o"><option value="score">Hoogste score</option><option value="ts">Nieuwste</option>
+<option value="huur">Laagste huur</option></select></div><div id="l"></div>
+<script>
+var D=[],F="open";
+var T={open:"Nieuw en bewaard",gereageerd:"Gereageerd",afgewezen:"Afgewezen",alles:"Alles"};
+var fb=document.getElementById("f"),ls=document.getElementById("l"),so=document.getElementById("o");
+function ok(x){return F=="alles"||(F=="open"?(x.status=="nieuw"||x.status=="bewaard"):x.status==F)}
+function draw(){
+fb.textContent="";
+Object.keys(T).forEach(function(k){var b=document.createElement("button");b.textContent=T[k];if(k==F)b.className="on";b.onclick=function(){F=k;draw()};fb.appendChild(b)});
+var r=D.filter(ok),k=so.value;
+r.sort(function(a,b){return k=="huur"?(a.huur||1e9)-(b.huur||1e9):(b[k]||0)-(a[k]||0)});
+ls.textContent="";
+if(!r.length){ls.textContent="Nog niets in deze lijst.";return}
+r.forEach(function(x){
+var c=document.createElement("div");c.className="c";
+var lnk=x.url&&/^https?:\/\//.test(x.url);
+var t=document.createElement(lnk?"a":"span");
+if(lnk){t.href=x.url;t.target="_blank";t.rel="noopener"}
+t.textContent=(x.score>=8?"🟢":x.score>=5?"🟡":"🔴")+" "+(x.score||"?")+"/10 · "+(x.titel||"Woning");
+t.style.fontWeight="700";
+var m=document.createElement("div");m.className="m";
+m.textContent=[x.plaats,x.huur?"€"+x.huur:null,x.slk?x.slk+" slk":null,x.ov?"~"+x.ov+" min OV":null,x.bron,"#"+x.nr,new Date(x.ts*1000).toLocaleDateString("nl-NL")].filter(Boolean).join(" · ");
+c.appendChild(t);c.appendChild(m);ls.appendChild(c)})}
+so.onchange=draw;draw();
+</script></body></html>
