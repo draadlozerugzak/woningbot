@@ -1,37 +1,67 @@
 <!doctype html><html lang="nl"><head><meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1"><title>Woningen</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>Woningzoeker</title>
 <style>
-:root{--bg:#fff;--fg:#1a1a1a;--mu:#666;--card:#f4f4f2;--bd:#ddd}
-@media(prefers-color-scheme:dark){:root{--bg:#121212;--fg:#eee;--mu:#9a9a9a;--card:#1e1e1e;--bd:#333}}
-body{margin:0 auto;padding:16px;max-width:720px;background:var(--bg);color:var(--fg);font:16px/1.4 system-ui,sans-serif}
-button,select{font:inherit;padding:6px 10px;border:1px solid var(--bd);border-radius:8px;background:var(--card);color:var(--fg)}
-button.on{border-color:var(--fg)}.bar{display:flex;flex-wrap:wrap;gap:6px;margin:12px 0}
-.c{background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:12px;margin:10px 0}
-.m{color:var(--mu);font-size:14px}a{color:inherit}
-</style></head><body><h1>Woningen</h1><div class="bar" id="f"></div>
-<div class="bar"><select id="o"><option value="score">Hoogste score</option><option value="ts">Nieuwste</option>
-<option value="huur">Laagste huur</option></select></div><div id="l"></div>
+:root{--bg:#f3f5f7;--card:#fff;--fg:#14202b;--mu:#5d6b78;--bd:#dde3e8;--ac:#0b7a75;--acf:#fff;--gr:#1f9d55;--ge:#d99a00;--ro:#d64545;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f1519;--card:#18212a;--fg:#e8eef3;--mu:#98a6b3;--bd:#2a3642;--ac:#3cc3bb;--acf:#06201e}}
+:root[data-theme="dark"]{--bg:#0f1519;--card:#18212a;--fg:#e8eef3;--mu:#98a6b3;--bd:#2a3642;--ac:#3cc3bb;--acf:#06201e}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.45 system-ui,-apple-system,"Segoe UI",sans-serif}
+header{background:var(--ac);color:var(--acf);padding:18px 16px}.w{max-width:1000px;margin:0 auto;padding:0 14px}header .w{padding:0}
+h1{margin:0;font-size:22px}header p{margin:4px 0 0;opacity:.85}
+.st{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0}.st div{flex:1 1 120px;background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:10px 12px}
+.st b{display:block;font-size:20px}.st span{color:var(--mu);font-size:13px}
+.g{display:grid;gap:16px;grid-template-columns:260px 1fr;align-items:start}@media(max-width:800px){.g{grid-template-columns:1fr}}
+.f{background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:14px}.f summary{font-weight:700;cursor:pointer}
+.f label{display:block;font-size:13px;color:var(--mu);margin:12px 0 4px}
+select,input[type=range]{width:100%}select{padding:8px;border:1px solid var(--bd);border-radius:8px;background:var(--bg);color:var(--fg);font:inherit}
+.ch{display:flex;flex-wrap:wrap;gap:6px}.ch button,.b{font:inherit;border:1px solid var(--bd);background:var(--bg);color:var(--fg);border-radius:20px;padding:5px 12px;cursor:pointer;text-decoration:none;display:inline-block}
+.ch button.on{background:var(--ac);color:var(--acf);border-color:var(--ac)}
+.c{display:flex;gap:14px;background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:14px;margin-bottom:12px}
+.sc{flex:none;width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;color:#fff;font-size:18px}
+.m{flex:1;min-width:0}.t{font-weight:700;font-size:17px;color:var(--fg);text-decoration:none}.t:hover{text-decoration:underline}
+.p{font-size:20px;font-weight:700;margin:2px 0}.p small{font-weight:400;color:var(--mu);font-size:13px}.i{color:var(--mu);font-size:14px;margin-top:2px}
+.fl{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}.fl span{font-size:12.5px;padding:3px 9px;border-radius:12px;background:#fff3d6;color:#7a5200}.fl .ok{background:#e0f4e8;color:#14532d}
+.tg{float:right;font-size:12px;padding:2px 9px;border-radius:10px;border:1px solid var(--bd);color:var(--mu)}
+.a{margin-top:10px;display:flex;gap:8px;flex-wrap:wrap}.a .pr{background:var(--ac);color:var(--acf);border-color:var(--ac)}
+</style></head><body>
+<header><div class="w"><h1>🏠 Woningzoeker</h1><p>Twee studenten · Utrecht en omgeving · alles op één plek</p></div></header>
+<div class="w"><div class="st" id="s"></div>
+<div class="g"><details class="f" id="fw"><summary>Filters</summary><div id="f"></div></details><main id="l"></main></div>
+<p class="i" style="margin:16px 0">Scores, reistijden en toeslagen zijn schattingen. Controleer alles in de advertentie zelf.</p></div>
 <script>
-var D=[],F="open";
-var T={open:"Nieuw en bewaard",gereageerd:"Gereageerd",afgewezen:"Afgewezen",alles:"Alles"};
-var fb=document.getElementById("f"),ls=document.getElementById("l"),so=document.getElementById("o");
-function ok(x){return F=="alles"||(F=="open"?(x.status=="nieuw"||x.status=="bewaard"):x.status==F)}
-function draw(){
-fb.textContent="";
-Object.keys(T).forEach(function(k){var b=document.createElement("button");b.textContent=T[k];if(k==F)b.className="on";b.onclick=function(){F=k;draw()};fb.appendChild(b)});
-var r=D.filter(ok),k=so.value;
-r.sort(function(a,b){return k=="huur"?(a.huur||1e9)-(b.huur||1e9):(b[k]||0)-(a[k]||0)});
-ls.textContent="";
-if(!r.length){ls.textContent="Nog niets in deze lijst.";return}
-r.forEach(function(x){
-var c=document.createElement("div");c.className="c";
-var lnk=x.url&&/^https?:\/\//.test(x.url);
-var t=document.createElement(lnk?"a":"span");
-if(lnk){t.href=x.url;t.target="_blank";t.rel="noopener"}
-t.textContent=(x.score>=8?"🟢":x.score>=5?"🟡":"🔴")+" "+(x.score||"?")+"/10 · "+(x.titel||"Woning");
-t.style.fontWeight="700";
-var m=document.createElement("div");m.className="m";
-m.textContent=[x.plaats,x.huur?"€"+x.huur:null,x.slk?x.slk+" slk":null,x.ov?"~"+x.ov+" min OV":null,x.bron,"#"+x.nr,new Date(x.ts*1000).toLocaleDateString("nl-NL")].filter(Boolean).join(" · ");
-c.appendChild(t);c.appendChild(m);ls.appendChild(c)})}
-so.onchange=draw;draw();
+var D=[],S={st:"open",pl:"",br:"",mh:2000,ms:0,so:"score"};
+var T={open:"Nieuw en bewaard",bewaard:"Bewaard",gereageerd:"Gereageerd",afgewezen:"Afgewezen",alles:"Alles"};
+function $(i){return document.getElementById(i)}
+function e(t,c,x){var n=document.createElement(t);if(c)n.className=c;if(x!=null)n.textContent=x;return n}
+function eur(n){return "€"+Number(n).toLocaleString("nl-NL")}
+function uniq(k){var o={};D.forEach(function(x){if(x[k])o[x[k]]=1});return Object.keys(o).sort()}
+function ok(x){var s=x.status||"nieuw";
+if(S.st=="open"?(s!="nieuw"&&s!="bewaard"):(S.st!="alles"&&s!=S.st))return false;
+if(S.pl&&x.plaats!=S.pl)return false;if(S.br&&x.bron!=S.br)return false;
+if(x.huur&&x.huur>S.mh)return false;return(x.score||0)>=S.ms}
+function sel(f,lbl,k){f.appendChild(e("label",0,lbl));var s=e("select");s.appendChild(new Option("Alle",""));uniq(k=="pl"?"plaats":"bron").forEach(function(o){s.appendChild(new Option(o,o))});s.value=S[k];s.onchange=function(){S[k]=s.value;list()};f.appendChild(s)}
+function rng(f,lbl,k,mn,mx,st,fm){var l=e("label",0,lbl+": "+fm(S[k])),r=e("input");r.type="range";r.min=mn;r.max=mx;r.step=st;r.value=S[k];r.oninput=function(){S[k]=+r.value;l.textContent=lbl+": "+fm(S[k]);list()};f.appendChild(l);f.appendChild(r)}
+function filters(){var f=$("f");f.textContent="";f.appendChild(e("label",0,"Status"));var c=e("div","ch");
+Object.keys(T).forEach(function(k){var b=e("button",k==S.st?"on":"",T[k]);b.onclick=function(){S.st=k;filters();list()};c.appendChild(b)});f.appendChild(c);
+sel(f,"Plaats","pl");sel(f,"Website","br");
+rng(f,"Maximale huur","mh",800,2000,50,eur);rng(f,"Minimale score","ms",0,10,1,function(v){return v+"/10"});
+f.appendChild(e("label",0,"Sorteren op"));var so=e("select");[["score","Hoogste score"],["ts","Nieuwste"],["huur","Laagste huur"]].forEach(function(o){so.appendChild(new Option(o[1],o[0]))});
+so.value=S.so;so.onchange=function(){S.so=so.value;list()};f.appendChild(so)}
+function stats(){var o=D.filter(function(x){var s=x.status||"nieuw";return s=="nieuw"||s=="bewaard"}),h=o.filter(function(x){return x.huur}).map(function(x){return x.huur});
+var bs=Math.max.apply(null,[0].concat(o.map(function(x){return x.score||0}))),s=$("s");s.textContent="";
+[[o.length,"open woningen"],[bs?bs+"/10":"-","beste score"],[h.length?eur(Math.round(h.reduce(function(a,b){return a+b})/h.length)):"-","gemiddelde huur"],[D.filter(function(x){return x.status=="gereageerd"}).length,"gereageerd"]].forEach(function(v){var d=e("div");d.appendChild(e("b",0,v[0]));d.appendChild(e("span",0,v[1]));s.appendChild(d)})}
+function lk(t,c,u){var a=e("a",c,t);a.href=u;a.target="_blank";a.rel="noopener";return a}
+function card(x){var c=e("div","c"),sc=x.score||0,b=e("div","sc",sc||"?");b.style.background=sc>=8?"var(--gr)":sc>=5?"var(--ge)":"var(--ro)";c.appendChild(b);
+var m=e("div","m"),st=x.status||"nieuw",u=x.url&&/^https?:\/\//.test(x.url);if(st!="nieuw")m.appendChild(e("span","tg",T[st]||st));
+m.appendChild(u?lk(x.titel||"Woning","t",x.url):e("span","t",x.titel||"Woning"));
+var p=e("div","p",x.huur?eur(x.huur):"Prijs onbekend");p.appendChild(e("small",0," per maand"));m.appendChild(p);
+m.appendChild(e("div","i",[x.plaats&&"📍 "+x.plaats,x.slk&&"🛏 "+x.slk+" slk",x.opp&&"📐 "+x.opp+" m²",x.ov&&"🚆 ~"+x.ov+" min OV"].filter(Boolean).join("  ·  ")));
+if(x.netto)m.appendChild(e("div","i","💶 Na huurtoeslag ca. "+eur(x.netto)+" p.p. (schatting)"));
+var fl=e("div","fl");(x.vlaggen||[]).forEach(function(v){fl.appendChild(e("span",0,v))});if(x.wv)fl.appendChild(e("span","ok",x.wv));if(fl.childNodes.length)m.appendChild(fl);
+if(x.sam)m.appendChild(e("div","i",x.sam));
+m.appendChild(e("div","i",[x.bron,"#"+x.nr,new Date(x.ts*1000).toLocaleDateString("nl-NL")].filter(Boolean).join(" · ")));
+var a=e("div","a");if(u)a.appendChild(lk("Bekijk advertentie ↗","b pr",x.url));if(x.route)a.appendChild(lk("🗺 OV-route","b",x.route));m.appendChild(a);c.appendChild(m);return c}
+function list(){var r=D.filter(ok),k=S.so;r.sort(function(a,b){return k=="huur"?(a.huur||1e9)-(b.huur||1e9):(b[k]||0)-(a[k]||0)});
+var L=$("l");L.textContent="";L.appendChild(e("p","i",r.length+" woningen"));if(!r.length)L.appendChild(e("p","i","Geen woningen met deze filters."));
+r.forEach(function(x){L.appendChild(card(x))})}
+if(innerWidth>800)$("fw").open=true;stats();filters();list();
 </script></body></html>
