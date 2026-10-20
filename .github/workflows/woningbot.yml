@@ -31,6 +31,7 @@ jobs:
           GOOGLE_MAPS_API_KEY: ${{ secrets.GOOGLE_MAPS_API_KEY }}
           MAIL_ADDRESS: ${{ secrets.MAIL_ADDRESS }}
           MAIL_APP_PASSWORD: ${{ secrets.MAIL_APP_PASSWORD }}
+          MAIL_IMAP_HOST: ${{ secrets.MAIL_IMAP_HOST }}
       - name: Opslaan welke advertenties al gezien zijn
         run: |
           git config user.name "woningbot"
