@@ -1,0 +1,213 @@
+[
+ {
+  "naam": "HouseHunting",
+  "url": "https://househunting.nl/",
+  "pattern": "/woningaanbod/[0-9a-f]{8}-[0-9a-f]{4}-",
+  "aan": true
+ },
+ {
+  "naam": "123Wonen",
+  "url": "https://www.123wonen.nl/huurwoningen/in/utrecht",
+  "plaatsen": true,
+  "aan": true
+ },
+ {
+  "naam": "Brecheisen",
+  "url": "https://www.brecheisen.nl/woningen/huur/",
+  "aan": true
+ },
+ {
+  "naam": "De Keizer",
+  "url": "https://www.dekeizer.nl/woningen/",
+  "aan": true
+ },
+ {
+  "naam": "Nederwoon",
+  "url": "https://www.nederwoon.nl/search?city=Utrecht",
+  "plaatsen": true,
+  "aan": true
+ },
+ {
+  "naam": "Melvin de Makelaar",
+  "url": "https://www.melvindemakelaar.nl/woningaanbod/huur",
+  "aan": true
+ },
+ {
+  "naam": "Huurstunt",
+  "url": "https://www.huurstunt.nl/huren/provincie-utrecht",
+  "aan": true
+ },
+ {
+  "naam": "Kamer.nl",
+  "url": "https://www.kamer.nl/huren/?q=utrecht",
+  "plaatsen": true,
+  "aan": true
+ },
+ {
+  "naam": "Kamers Utrecht",
+  "url": "https://www.kamersutrecht.nl/",
+  "aan": true
+ },
+ {
+  "naam": "Studio Utrecht",
+  "url": "https://www.studioutrecht.nl/",
+  "aan": true
+ },
+ {
+  "naam": "Holland2Stay",
+  "url": "https://www.holland2stay.com/residences?page=1&city[filter]=Utrecht,27",
+  "aan": true
+ },
+ {
+  "naam": "Dutch Student Housing",
+  "url": "https://dutchstudenthousing.nl/utrecht/search",
+  "plaatsen": true,
+  "aan": true
+ },
+ {
+  "naam": "Domica",
+  "url": "https://www.domica.nl/woningaanbod?offer=rent",
+  "aan": true
+ },
+ {
+  "naam": "LG Vastgoed",
+  "url": "https://lgvastgoed.nl/aanbod/huur?title_address.city=utrecht",
+  "plaatsen": true,
+  "aan": true
+ },
+ {
+  "naam": "Covers Wonen",
+  "url": "https://coverswonen.nl/aanbod/huur/",
+  "aan": true
+ },
+ {
+  "naam": "Your House",
+  "url": "https://your-house.nl/woningaanbod/huur",
+  "aan": true
+ },
+ {
+  "naam": "Hometorent",
+  "url": "https://www.hometorent.nl/nl/aanbod",
+  "aan": true
+ },
+ {
+  "naam": "VGW Group",
+  "url": "https://vgwgroup.nl/aanbod-lange-termijnverhuur/",
+  "aan": true
+ },
+ {
+  "naam": "Domvast",
+  "url": "https://domvast.nl/woningen/huur/",
+  "aan": true
+ },
+ {
+  "naam": "365 Makelaardij",
+  "url": "https://365makelaardij.nl/wonen/",
+  "aan": true
+ },
+ {
+  "naam": "Beumer",
+  "url": "https://www.beumer.nl/huurwoningen/",
+  "aan": true
+ },
+ {
+  "naam": "Overduyn",
+  "url": "https://overduyn.nl/huuraanbod/",
+  "aan": true
+ },
+ {
+  "naam": "Romijn Makelaardij",
+  "url": "https://romijnmakelaardij.nl/woningaanbod/huur",
+  "aan": true
+ },
+ {
+  "naam": "Molenbeek",
+  "url": "https://molenbeek.nl/wonen/aanbod?buy_rent=rent&order_by=created_at-desc&page=1",
+  "aan": true
+ },
+ {
+  "naam": "Van Eek Makelaars",
+  "url": "https://www.vaneemakelaars.nl/woningaanbod/huur",
+  "aan": true
+ },
+ {
+  "naam": "Burgersdijk",
+  "url": "https://burgersdijk.com/huurwoningen/",
+  "aan": true
+ },
+ {
+  "naam": "Drenth Makelaars",
+  "url": "https://www.drenthmakelaars.nl/woningaanbod/huur?moveunavailablelistingstothebottom=true&orderby=10&orderdescending=true",
+  "aan": true
+ },
+ {
+  "naam": "SSH XL",
+  "url": "https://www.sshxl.nl/nl/aanbod",
+  "aan": true
+ },
+ {
+  "naam": "DAK Utrecht",
+  "url": "https://utrecht.mijndak.nl/Woningaanbod",
+  "aan": true
+ },
+ {
+  "naam": "DAK Midden-Holland",
+  "url": "https://middenholland.mijndak.nl/Woningaanbod",
+  "aan": true
+ },
+ {
+  "naam": "Woongroen",
+  "url": "https://www.woongroen.nl/ik-zoek/huuraanbod?type=vrije_sector_huurwoning",
+  "aan": true
+ },
+ {
+  "naam": "Lekstede Wonen",
+  "url": "https://www.lekstedewonen.nl/ik-zoek/vrije-sector-huur/actueel-aanbod",
+  "aan": true
+ },
+ {
+  "naam": "De Alliantie middensegment",
+  "url": "https://ik-zoek.de-alliantie.nl/huren/middensegmentwoningen",
+  "aan": true
+ },
+ {
+  "naam": "De Alliantie vrije sector",
+  "url": "https://ik-zoek.de-alliantie.nl/huren/vrijesectorwoningen",
+  "aan": true
+ },
+ {
+  "naam": "Divorcehousing",
+  "url": "https://aanbod.divorcehousing.nl/",
+  "aan": true
+ },
+ {
+  "naam": "The Fizz Utrecht",
+  "url": "https://www.the-fizz.com/search/?searchcriteria=BUILDING:FIZZ_UTRECHT;AREA:UTRECHT;",
+  "aan": true
+ },
+ {
+  "naam": "Gapph",
+  "url": "https://www.gapph.nl/woonruimte",
+  "aan": true
+ },
+ {
+  "naam": "Rotsvast Utrecht (JavaScript)",
+  "url": "https://www.rotsvast.nl/huren/?search=utrecht",
+  "aan": false
+ },
+ {
+  "naam": "Interhouse (boven budget)",
+  "url": "https://interhouse.nl/aanbod/?offer=huur&search_terms=Utrecht&search_type=city&number_of_results=18&sort=date-desc&display=grid",
+  "aan": false
+ },
+ {
+  "naam": "WVO (bedrijfsaanbod)",
+  "url": "https://www.wvo.nl/nl/bedrijfsaanbod/huur",
+  "aan": false
+ },
+ {
+  "naam": "Marktpand (bedrijfsaanbod)",
+  "url": "https://www.marktpand.nl/",
+  "aan": false
+ }
+]
