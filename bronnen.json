@@ -22,12 +22,6 @@
   "aan": true
  },
  {
-  "naam": "Nederwoon",
-  "url": "https://www.nederwoon.nl/search?city=Utrecht",
-  "plaatsen": true,
-  "aan": true
- },
- {
   "naam": "Melvin de Makelaar",
   "url": "https://www.melvindemakelaar.nl/woningaanbod/huur",
   "aan": true
@@ -65,17 +59,6 @@
   "aan": true
  },
  {
-  "naam": "Domica",
-  "url": "https://www.domica.nl/woningaanbod?offer=rent",
-  "aan": true
- },
- {
-  "naam": "LG Vastgoed",
-  "url": "https://lgvastgoed.nl/aanbod/huur?title_address.city=utrecht",
-  "plaatsen": true,
-  "aan": true
- },
- {
   "naam": "Covers Wonen",
   "url": "https://coverswonen.nl/aanbod/huur/",
   "aan": true
@@ -83,11 +66,6 @@
  {
   "naam": "Your House",
   "url": "https://your-house.nl/woningaanbod/huur",
-  "aan": true
- },
- {
-  "naam": "Hometorent",
-  "url": "https://www.hometorent.nl/nl/aanbod",
   "aan": true
  },
  {
@@ -116,11 +94,6 @@
   "aan": true
  },
  {
-  "naam": "Romijn Makelaardij",
-  "url": "https://romijnmakelaardij.nl/woningaanbod/huur",
-  "aan": true
- },
- {
   "naam": "Van Eek Makelaars",
   "url": "https://www.vaneemakelaars.nl/woningaanbod/huur",
   "aan": true
@@ -136,31 +109,6 @@
   "aan": true
  },
  {
-  "naam": "SSH XL",
-  "url": "https://www.sshxl.nl/nl/aanbod",
-  "aan": true
- },
- {
-  "naam": "DAK Utrecht",
-  "url": "https://utrecht.mijndak.nl/Woningaanbod",
-  "aan": true
- },
- {
-  "naam": "DAK Midden-Holland",
-  "url": "https://middenholland.mijndak.nl/Woningaanbod",
-  "aan": true
- },
- {
-  "naam": "Woongroen",
-  "url": "https://www.woongroen.nl/ik-zoek/huuraanbod?type=vrije_sector_huurwoning",
-  "aan": true
- },
- {
-  "naam": "Lekstede Wonen",
-  "url": "https://www.lekstedewonen.nl/ik-zoek/vrije-sector-huur/actueel-aanbod",
-  "aan": true
- },
- {
   "naam": "De Alliantie middensegment",
   "url": "https://ik-zoek.de-alliantie.nl/huren/middensegmentwoningen",
   "aan": true
@@ -173,11 +121,6 @@
  {
   "naam": "Divorcehousing",
   "url": "https://aanbod.divorcehousing.nl/",
-  "aan": true
- },
- {
-  "naam": "The Fizz Utrecht",
-  "url": "https://www.the-fizz.com/search/?searchcriteria=BUILDING:FIZZ_UTRECHT;AREA:UTRECHT;",
   "aan": true
  },
  {
