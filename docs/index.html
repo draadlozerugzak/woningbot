@@ -52,7 +52,7 @@ var bs=Math.max.apply(null,[0].concat(o.map(function(x){return x.score||0}))),s=
 function lk(t,c,u){var a=e("a",c,t);a.href=u;a.target="_blank";a.rel="noopener";return a}
 function card(x){var c=e("div","c"),sc=x.score||0,b=e("div","sc",sc||"?");b.style.background=sc>=8?"var(--gr)":sc>=5?"var(--ge)":"var(--ro)";c.appendChild(b);
 var m=e("div","m"),st=x.status||"nieuw",u=x.url&&/^https?:\/\//.test(x.url);if(st!="nieuw")m.appendChild(e("span","tg",T[st]||st));
-m.appendChild(u?lk(x.titel||"Woning","t",x.url):e("span","t",x.titel||"Woning"));
+var tt="#"+x.nr+" · "+(x.titel||"Woning");m.appendChild(u?lk(tt,"t",x.url):e("span","t",tt));
 var p=e("div","p",x.huur?eur(x.huur):"Prijs onbekend");p.appendChild(e("small",0," per maand"));m.appendChild(p);
 m.appendChild(e("div","i",[x.plaats&&"📍 "+x.plaats,x.slk&&"🛏 "+x.slk+" slk",x.opp&&"📐 "+x.opp+" m²",x.ov&&"🚆 ~"+x.ov+" min OV"].filter(Boolean).join("  ·  ")));
 if(x.netto)m.appendChild(e("div","i","💶 Na huurtoeslag ca. "+eur(x.netto)+" p.p. (schatting)"));
