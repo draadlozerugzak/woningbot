@@ -1,4 +1,0 @@
-anthropic
-requests
-beautifulsoup4
-playwright
