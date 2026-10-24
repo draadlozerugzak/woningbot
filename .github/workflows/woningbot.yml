@@ -15,7 +15,7 @@ concurrency:
 jobs:
   run:
     runs-on: ubuntu-latest
-    timeout-minutes: 12
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -30,6 +30,7 @@ jobs:
           key: playwright-${{ runner.os }}-v1
       - run: python -m playwright install --with-deps chromium
         continue-on-error: true
+        timeout-minutes: 4
       - run: python bot.py
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
@@ -40,6 +41,7 @@ jobs:
           MAIL_APP_PASSWORD: ${{ secrets.MAIL_APP_PASSWORD }}
           MAIL_IMAP_HOST: ${{ secrets.MAIL_IMAP_HOST }}
       - name: Opslaan (status en website)
+        if: always()
         run: |
           git config user.name "woningbot"
           git config user.email "woningbot@users.noreply.github.com"
